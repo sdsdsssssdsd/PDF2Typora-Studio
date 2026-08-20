@@ -1,5 +1,9 @@
 # PDF2Typora Studio
 
+> **Early-stage / actively developed.** APIs, UI, and conversion defaults may still change; expect rough edges and please file issues when something breaks.
+
+![PDF2Typora Studio main window](docs/images/gui-main.png)
+
 把教材、论文一类的 PDF 转成可以在 Typora 里直接打开编辑的 Markdown。
 
 多数「PDF 转 MD」工具要么只抽文字（公式、栏式排版、插图对不齐），要么整页丢给大模型、结果难复核。这个项目做成 Windows 上的桌面流水线：按页渲染、按页转录、按图序裁图、再拼成整篇文档，中间产物都落在项目目录里，方便对照 PDF 检查。
@@ -139,8 +143,9 @@ clean.md / final.md     清洗与定稿（跑完对应阶段后才有）
 - [架构说明](docs/ARCHITECTURE.md)  
 - [阶段路线](docs/ROADMAP.md)  
 - [AI Provider 说明](docs/AI_PROVIDER.md)  
+- [如何参与 / 提 conversion regression](CONTRIBUTING.md)  
 - [分阶段设计稿](docs/design/)  
 
 ## 许可与范围
 
-本仓库是应用源码与文档快照，不含本地虚拟环境、工作区 PDF、导出结果和 API 密钥。二次分发或商用前请自行确认所用模型与 API 的条款。
+源码以 [MIT License](LICENSE) 发布。仓库不含本地虚拟环境、工作区 PDF、导出结果和 API 密钥。PyQt6 与所用模型 / API 另有各自条款，二次分发或商用前请一并确认。
