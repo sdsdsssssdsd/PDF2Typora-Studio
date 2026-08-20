@@ -144,6 +144,7 @@ clean.md / final.md     清洗与定稿（跑完对应阶段后才有）
 - [阶段路线](docs/ROADMAP.md)  
 - [AI Provider 说明](docs/AI_PROVIDER.md)  
 - [如何参与 / 提 conversion regression](CONTRIBUTING.md)  
+- [安全问题私下报告](SECURITY.md)  
 - [分阶段设计稿](docs/design/)  
 
 ## 许可与范围
