@@ -1,0 +1,8 @@
+# Copy to user.yaml for local overrides (gitignored).
+# API keys are stored via OS keyring, not in this file.
+ollama:
+  mode: external
+  external:
+    base_url: http://127.0.0.1:11434
+transcription:
+  page_engine: hybrid_ocr_api  # or vision_only

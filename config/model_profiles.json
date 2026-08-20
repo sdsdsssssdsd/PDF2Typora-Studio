@@ -1,0 +1,155 @@
+{
+  "profiles": [
+    {
+      "model_name": "gemma3:4b-it-q4_K_M",
+      "digest": "a2af6cc3eb7fa8be8504abaf9b04e88f17a119ec3f04a3addf55f92841195f5a",
+      "preferred_context": null,
+      "supports_vision": true,
+      "supports_structured_output": true,
+      "successful_pages": 3,
+      "failed_pages": 0,
+      "last_tested_at": "2026-08-19T21:59:07.742901+00:00",
+      "notes": [
+        "Phase 4: structured output works but prompt leak / image URL issues",
+        "Phase 5A QUALIFIED on pages [1, 4, 8]"
+      ],
+      "qualification": "QUALIFIED"
+    },
+    {
+      "model_name": "qwen3.5:9b-q4_K_M",
+      "digest": "6488c96fa5faab64bb65cbd30d4289e20e6130ef535a93ef9a49f42eda893ea7",
+      "preferred_context": null,
+      "supports_vision": true,
+      "supports_structured_output": true,
+      "successful_pages": 0,
+      "failed_pages": 1,
+      "last_tested_at": "2026-08-19T22:06:17.094717+00:00",
+      "notes": [
+        "Phase 5A: no schema-valid pages"
+      ],
+      "qualification": "DISABLED"
+    },
+    {
+      "model_name": "yi:9b-chat-v1.5-q4_K_M",
+      "digest": "70f792429c0757fb7ea3dbe195b019df0cd839f898244906b9e2c3b3a03b1d75",
+      "preferred_context": null,
+      "supports_vision": true,
+      "supports_structured_output": true,
+      "successful_pages": 0,
+      "failed_pages": 0,
+      "last_tested_at": null,
+      "notes": [],
+      "qualification": "UNTESTED"
+    },
+    {
+      "model_name": "falcon3:10b-instruct-q4_K_M",
+      "digest": "1653ff122acd9292fe21a097c0f08ce419439be595b312d6d6d06ee33df91b88",
+      "preferred_context": null,
+      "supports_vision": true,
+      "supports_structured_output": true,
+      "successful_pages": 0,
+      "failed_pages": 0,
+      "last_tested_at": null,
+      "notes": [],
+      "qualification": "UNTESTED"
+    },
+    {
+      "model_name": "aya-expanse:8b-q4_K_M",
+      "digest": "65f986688a01b456158c57b042bc48afcb85d060646a82d491d1c0a01375b10e",
+      "preferred_context": null,
+      "supports_vision": true,
+      "supports_structured_output": true,
+      "successful_pages": 0,
+      "failed_pages": 0,
+      "last_tested_at": null,
+      "notes": [],
+      "qualification": "UNTESTED"
+    },
+    {
+      "model_name": "glm4:9b-chat-q4_K_M",
+      "digest": "f17dc1ac3c7cc220242031521a361ccf90cfa45d0c9837e4113233859daea2cd",
+      "preferred_context": null,
+      "supports_vision": true,
+      "supports_structured_output": true,
+      "successful_pages": 0,
+      "failed_pages": 0,
+      "last_tested_at": null,
+      "notes": [],
+      "qualification": "UNTESTED"
+    },
+    {
+      "model_name": "nemotron-3-nano:4b-q8_0",
+      "digest": "c534497d032cbb62f7938b9f8f315e7236d798ca51bb60408c943bd884b12269",
+      "preferred_context": null,
+      "supports_vision": true,
+      "supports_structured_output": true,
+      "successful_pages": 0,
+      "failed_pages": 0,
+      "last_tested_at": null,
+      "notes": [],
+      "qualification": "UNTESTED"
+    },
+    {
+      "model_name": "granite4.1:8b-q4_K_M",
+      "digest": "444af1c4b2fedd6b54041aca558e7300b0b3d5c0468c44619126240323ba2852",
+      "preferred_context": null,
+      "supports_vision": true,
+      "supports_structured_output": true,
+      "successful_pages": 0,
+      "failed_pages": 0,
+      "last_tested_at": null,
+      "notes": [],
+      "qualification": "UNTESTED"
+    },
+    {
+      "model_name": "ministral-3:8b-instruct-2512-q4_K_M",
+      "digest": "1922accd5827ebe6829e536369195db25eaf664528dc66206d646ea3bb386b71",
+      "preferred_context": null,
+      "supports_vision": true,
+      "supports_structured_output": true,
+      "successful_pages": 0,
+      "failed_pages": 0,
+      "last_tested_at": null,
+      "notes": [
+        "Phase 4: INVALID_SCHEMA / TIMEOUT — disabled for default batch"
+      ],
+      "qualification": "DISABLED"
+    },
+    {
+      "model_name": "llama3.1:8b-instruct-q4_K_M",
+      "digest": "46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e",
+      "preferred_context": null,
+      "supports_vision": true,
+      "supports_structured_output": true,
+      "successful_pages": 0,
+      "failed_pages": 0,
+      "last_tested_at": null,
+      "notes": [],
+      "qualification": "UNTESTED"
+    },
+    {
+      "model_name": "phi4-mini:3.8b",
+      "digest": "78fad5d182a7c33065e153a5f8ba210754207ba9d91973f57dffa7f487363753",
+      "preferred_context": null,
+      "supports_vision": true,
+      "supports_structured_output": true,
+      "successful_pages": 0,
+      "failed_pages": 0,
+      "last_tested_at": null,
+      "notes": [],
+      "qualification": "UNTESTED"
+    },
+    {
+      "model_name": "deepseek-chat",
+      "digest": "",
+      "preferred_context": null,
+      "supports_vision": true,
+      "supports_structured_output": true,
+      "successful_pages": 0,
+      "failed_pages": 0,
+      "last_tested_at": null,
+      "notes": [],
+      "qualification": "UNTESTED"
+    }
+  ]
+}

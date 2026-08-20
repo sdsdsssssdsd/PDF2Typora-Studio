@@ -1,0 +1,253 @@
+application:
+  language: zh_CN
+
+workspace:
+  path: "./workspace"
+
+pdf:
+  dpi: 200
+  image_format: png
+  min_dpi: 72
+  max_dpi: 600
+  max_render_workers: 1
+
+ollama:
+  mode: external
+  bundled:
+    runtime_path: "./runtime/ollama"
+    models_path: "./runtime/models"
+    port_start: 11435
+    port_end: 11450
+    no_cloud: true
+  external:
+    base_url: "http://127.0.0.1:11434"
+  custom:
+    base_url: ""
+  timeout:
+    connect_seconds: 3
+    start_seconds: 30
+    request_seconds: 300
+  # Backward-compatible flat keys (resolved by config_manager)
+  bundled_runtime: "./runtime/ollama"
+  bundled_models: "./runtime/models"
+  bundled_host: "127.0.0.1:11435"
+  external_base_url: "http://127.0.0.1:11434"
+
+ai:
+  provider: ollama
+  selected_model: ""
+  vision_only_filter: true
+  model: ""
+  pages_per_request: 1
+  temperature: 0.0
+  previous_context_chars: 1000
+  context_length: auto
+
+retry:
+  max_attempts: 3
+  delay_seconds: 3
+
+figures:
+  pipeline_version: "1"
+  crop_dpi: 300
+  crop_padding_page_ratio: 0.008
+  max_workers: 1
+  use_cache: true
+  preserve_native_format: true
+  auto_resolve: true
+  caption_anchored_auto: true
+  extract_embedded: true
+  detect_vector: true
+  auto_crop: true
+  marker_normalization:
+    enabled: true
+    allow_safe_syntax_repair: true
+    allow_index_guess: false
+    allow_missing_marker_insertion: false
+  review:
+    auto_advance: true
+  preview:
+    dpi: 200
+  readiness:
+    require_all_resolved: false
+    allow_unresolved_override: true
+  reconcile:
+    blocking: false
+  native_candidate:
+    min_width_px: 40
+    min_height_px: 40
+  matching:
+    auto_threshold: 0.85
+    review_threshold: 0.55
+  validation:
+    minimum_width_px: 40
+    minimum_height_px: 40
+
+assemble:
+  pipeline_version: "1"
+  preserve_page_markers: true
+  allow_unresolved_figures: true
+  require_continuity_review: false
+  use_cache: true
+  archive_previous_raw: true
+
+continuity:
+  analyzer_version: "1"
+  tail_chars: 500
+  head_chars: 500
+  enable_heuristics: true
+
+cleaner:
+  pipeline_version: "1"
+  mode: smart
+  temperature: 0.0
+  context:
+    initial: auto
+    escalation: 8192
+    maximum: 8192
+  use_cache: true
+  max_schema_retries: 1
+  max_timeout_retries: 1
+  max_content_retries: 1
+  preserve_visible_content: true
+  rules:
+    remove_page_markers: true
+    remove_printed_page_label: true
+    remove_horizontal_rules: true
+    convert_parenthesis_math: true
+    convert_bracket_math: true
+    remove_outer_markdown_fence: true
+  validation:
+    require_exact_image_refs: true
+    require_exact_numeric_tokens: true
+    require_exact_urls: true
+    require_math_payload_equivalence: true
+    require_table_payload_equivalence: true
+    require_visible_prose_equivalence: true
+  document:
+    create_clean_traced: true
+    create_clean: true
+
+final:
+  pipeline_version: "1"
+  preserve_clean_bytes: true
+  validation:
+    require_no_page_markers: true
+    require_no_figure_markers: true
+    require_all_images: true
+    require_relative_images: true
+    block_absolute_paths: true
+    block_unsafe_paths: true
+    block_horizontal_rules: true
+    validate_math_balance: true
+
+export:
+  pipeline_version: "1"
+  default_root: "./exports"
+  include_source_pdf: true
+  overwrite_existing: false
+  backup_existing: true
+
+typora:
+  executable_path: ""
+
+quality:
+  pipeline_version: "1"
+  escape_sanitize: true
+  text_coverage:
+    min_pdf_coverage: 0.85
+    min_markdown_coverage: 0.80
+  style:
+    restore_bold: true
+    restore_color: true
+  reconcile:
+    blocking: true
+  document_parsers:
+    paddleocr_vl: false
+    mineru: false
+  # Phase 9.5.2 — open-source engine benchmark (no training)
+  document_engines:
+    quality_mode: high  # high | fast | experimental
+    benchmark_engines:
+      - native_pdf
+      - mineru
+      - marker
+      - docling
+      - chandra
+  training_dataset:
+    enabled: true
+
+api_providers:
+  providers:
+    deepseek:
+      display_name: DeepSeek
+      base_url: "https://api.deepseek.com"
+      model: "deepseek-chat"
+      credential_id: "deepseek:default"
+      supports_text: true
+      supports_json: true
+      supports_vision: false
+    openai_compatible:
+      display_name: OpenAI Compatible
+      base_url: "https://api.openai.com/v1"
+      model: "gpt-4o-mini"
+      credential_id: "openai_compatible:default"
+      supports_text: true
+      supports_json: true
+      supports_vision: true
+    qwen_vision:
+      display_name: Qwen Vision API
+      base_url: "https://dashscope.aliyuncs.com/compatible-mode/v1"
+      model: "qwen-vl-plus"
+      credential_id: "qwen_vision:default"
+      supports_text: true
+      supports_json: true
+      supports_vision: true
+  task_routing:
+    # BYOK: cloud routes use YOUR paid API key; app ships no free quota
+    same_api_for_clean_and_vision: true
+    page_transcription: ollama
+    visual_verification: ollama
+    text_cleanup: ollama
+    figure_locator: ollama
+
+markdown:
+  preserve_raw: true
+  preserve_clean: true
+  relative_image_paths: true
+  validate_math: true
+
+logging:
+  level: INFO
+
+transcription:
+  pipeline_version: "5"
+  schema_version: "1.0"
+  temperature: 0.0
+  context_length: auto
+  think: false
+  keep_alive: "5m"
+  schema_retry_attempts: 1
+  use_cache: true
+  save_experiments: true
+  # Phase 9.5.1 page engine (LoRA training is NOT part of this phase)
+  page_engine: hybrid_ocr_api  # vision_only | hybrid_ocr_api | pdf_ocr_local | parser_only
+  run_ocr: true
+
+batch_transcription:
+  max_workers: 1
+  primary_model: ""
+  fallback_model: ""
+  keep_alive: "5m"
+  unload_on_finish: true
+  auto_accept: true
+  max_schema_retries: 1
+  max_timeout_retries: 1
+  max_quality_retries: 1
+  context:
+    initial: auto
+    escalation: 8192
+    maximum: 8192
+  pause_between_pages_ms: 0
+  use_cache: true
+  continue_on_page_failure: true

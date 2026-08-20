@@ -1,0 +1,39 @@
+# Virtualenv & Python
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+htmlcov/
+.coverage
+.coverage.*
+
+# Local secrets & overrides
+.env
+.env.*
+config/user.yaml
+
+# Runtime / generated (keep folder placeholders)
+workspace/*
+!workspace/.gitkeep
+exports/*
+!exports/.gitkeep
+logs/*
+!logs/.gitkeep
+build/
+dist/
+*.log
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Local scratch
+_tmp_*.py
+_build_*.py
