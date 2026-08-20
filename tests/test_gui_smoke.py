@@ -31,5 +31,5 @@ def test_main_window_creates(qapp):
     assert window.final_panel is not None
     assert window.pipeline_nav is not None
     assert window.workspace_tabs is not None
-    assert window.stage_stack.count() == 7
+    assert window.stage_stack.count() == 8
     window.close()

@@ -257,7 +257,17 @@ def test_page4_marker_mismatch_review(tmp_path: Path):
         bbox_1000=(100, 100, 800, 800),
     )
     _write_canonical(root, 1, "Body without marker", [fig])
-    svc = FigureService(project_root=root, pdf_path=pdf, db_path=db_path, config=load_config())
+    # Strict marker path (legacy): caption-anchored auto would crop without review
+    cfg = load_config()
+    figures = dict(cfg.get("figures") or {})
+    figures["caption_anchored_auto"] = False
+    readiness = dict(figures.get("readiness") or {})
+    readiness["require_all_resolved"] = True
+    readiness["allow_unresolved_override"] = False
+    figures["readiness"] = readiness
+    figures["reconcile"] = {"blocking": True}
+    cfg["figures"] = figures
+    svc = FigureService(project_root=root, pdf_path=pdf, db_path=db_path, config=cfg)
     result = svc.process_page(1)
     assert result.stage_status == StageStatus.NEEDS_REVIEW.value
     assert result.figures[0]["status"] == "needs_review"
