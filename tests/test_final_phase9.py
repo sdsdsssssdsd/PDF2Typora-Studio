@@ -292,7 +292,8 @@ def test_typora_launcher_startfile_fallback(tmp_path: Path):
     md = tmp_path / "x.md"
     md.write_text("# hi", encoding="utf-8")
     launcher = TyporaLauncher({"typora": {"executable_path": ""}})
-    with patch("sys.platform", "win32"), patch("os.startfile") as startfile:
+    # create=True: os.startfile exists only on Windows; CI runs on Linux.
+    with patch("sys.platform", "win32"), patch("os.startfile", create=True) as startfile:
         r = launcher.launch(md)
     assert r.success
     assert r.method == "os.startfile"
