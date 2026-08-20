@@ -1,0 +1,72 @@
+name: PDF conversion failure
+description: A document fails or regresses during render, transcribe, figures, assemble, clean, or export.
+title: "[conversion] "
+labels: ["conversion", "bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Help us reproduce the pipeline failure. Prefer a **minimal** PDF sample (a few pages) without private data.
+  - type: dropdown
+    id: stage
+    attributes:
+      label: Failed stage
+      options:
+        - render
+        - transcribe (Vision Only)
+        - transcribe (Hybrid OCR+API)
+        - figures
+        - assemble
+        - clean
+        - final / export
+        - unclear
+    validations:
+      required: true
+  - type: dropdown
+    id: regression
+    attributes:
+      label: Is this a regression?
+      options:
+        - "Yes — used to work on an earlier commit"
+        - "No — first time trying this PDF"
+        - "Not sure"
+    validations:
+      required: true
+  - type: textarea
+    id: symptoms
+    attributes:
+      label: Symptoms
+      description: Error text, empty output, wrong figures, assemble blocked, etc.
+    validations:
+      required: true
+  - type: textarea
+    id: sample
+    attributes:
+      label: Sample document
+      description: Link to a stripped sample, or describe page count / layout (scanned vs digital, dual column, many figures). Do not upload copyrighted full books if a short extract is enough.
+  - type: checkboxes
+    id: artifacts
+    attributes:
+      label: Artifacts present before failure
+      options:
+        - label: pages/*.png
+        - label: markdown_pages/
+        - label: figures/ or resolved_pages/
+        - label: intermediate/raw.md
+        - label: clean.md / final.md
+  - type: input
+    id: version
+    attributes:
+      label: Version / commit
+  - type: input
+    id: env
+    attributes:
+      label: Environment
+      placeholder: Windows 11 · Python 3.12 · Ollama model or API provider …
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant log excerpt
+      render: shell
+    validations:
+      required: true
